@@ -1,0 +1,33 @@
+<h1>Legislature Tracker</h1>
+
+
+	<h2>Meta</h2>
+	{% for key,value in meta.items %}
+		<li>{{ key }}: {{ value }}</li>	
+	{% endfor %}
+
+	<h2>Bills</h2>
+	<ul>
+	{% for bill in bills %}
+		<li>
+			<b><a href="/legislature/bill/{{ bill.session }}/{{ bill.bill_id }}">{{ bill.bill_id }}</a></b>
+			<ol>
+			{% for key,value in bill.items %}
+				<li>{{ key }}: {{ value }}</li>
+			{% endfor %}
+			</ol>
+			<p>Votes: {{ bill.votes }}</p>
+	{% endfor %}
+	</ul>
+
+	<h2>Senators</h2>
+	{% for senator in senators %}
+		<li>{{ senator.first_name }} {{ senator.last_name }}</li>
+	{% endfor %}
+	
+	<h2>Committees</h2>
+	
+		{% for committee in committees %}
+			<li>{{ committee.committee }}</li>
+			<p>{{ committee.members }}</p>
+		{% endfor %}
